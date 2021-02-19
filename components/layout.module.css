@@ -11,15 +11,17 @@
   }
   
   .headerImage {
-    width: 6rem;
-    height: 6rem;
-  }
-  
-  .headerHomeImage {
     width: 8rem;
     height: 8rem;
   }
   
-  .backToHome {
-    margin: 3rem 0 0;
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footerImage {
+    width: 100px;
+    height: 100px;
   }
