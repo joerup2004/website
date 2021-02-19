@@ -3,8 +3,8 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Joe'
-export const siteTitle = 'Next.js Sample Website'
+const name = 'Joe Rupertus'
+export const siteTitle = 'Joe Rupertus'
 
 export default function Layout({ children, home }) {
   return (
@@ -13,7 +13,7 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Joe Rupertus"
         />
         <meta
           property="og:image"
@@ -28,19 +28,28 @@ export default function Layout({ children, home }) {
         {home ? (
           <>
             <img
-              src="/images/profile.jpg"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+              src="/images/turtle.png"
+              className={`${styles.headerImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
+          <></>
+        )}
+      </header>
+
+      <main>{children}</main>
+
+      <footer className={styles.footer}>
+        {!home ? (
           <>
+            <br/>
             <Link href="/">
               <a>
                 <img
-                  src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                  src="/images/turtle.png"
+                  className={`${styles.footerImage} ${utilStyles.borderCircle}`}
                   alt={name}
                 />
               </a>
@@ -51,16 +60,10 @@ export default function Layout({ children, home }) {
               </Link>
             </h2>
           </>
+        ) : (
+          <></>
         )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      </footer>
     </div>
   )
 }

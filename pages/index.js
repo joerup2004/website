@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
+import styles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
@@ -20,27 +20,32 @@ export default function Home ({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Hello, my name is Joe</p>
-        <p>
-          Hello chickens
-        </p>
+
+      <section className={styles.headingMd}>
+        <p>Hello my friends. Welcome to the website.</p>
       </section>
 
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+      <section className={`${styles.headingMd} ${styles.padding1px}`}>
+        <h2 className={styles.headingLg}>Posts</h2>
 
-        <ul className={utilStyles.list}>
+        <ul className={styles.list}>
           {allPostsData.map(post => (
-            <li className={utilStyles.listItem} key={post.id}>
+            <li className={styles.listItem} key={post.id}>
               <Link href={`/posts/${post.id}`}>
-                <a>{post.title}</a>
+                <a>
+                  <div className={styles.horizontal}>
+                    <div className={styles.image}>
+                      <img src={post.image}/>
+                    </div>
+                    <div>
+                      <h1>{post.subject}</h1>
+                      <h2>{post.title}</h2>
+                      <h3>{post.date}</h3>
+                    </div>
+                  </div>
+                </a>
               </Link>
               <br />
-              
-              {/* <small className={utilStyles.lightText}>
-                <Date dateString={post.date} />
-              </small> */}
             </li>
           ))}
         </ul>
