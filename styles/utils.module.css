@@ -83,8 +83,15 @@
 .listItem h3 {
   margin: 0;
   padding-left: 15px;
-  padding-bottom: 10px;
   font-size: 18px;
+  font-weight: normal;
+  color: #666;
+}
+.listItem h4 {
+  margin: 0;
+  padding-left: 15px;
+  font-size: 18px;
+  font-weight: normal;
   color: #888;
 }
 

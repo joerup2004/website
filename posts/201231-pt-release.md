@@ -4,6 +4,7 @@ title: 'Planetaria App Released'
 category: 'app'
 date: '2020-12-31'
 image: '/images/Planetaria.png'
+desc: 'Explore the solar system'
 ---
 
 Just before midnight on New Year's Eve, the Planetaria iOS App has been released to the App Store for public download. After two months of building it, the app is finally complete. With it, you can explore the Solar System: the Sun, planets, moons, asteroids, and comets.

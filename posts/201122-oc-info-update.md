@@ -4,6 +4,7 @@ title: 'Information Update Released'
 category: 'app'
 date: '2020-11-22'
 image: '/images/Omega_Classic_Pink.png'
+desc: 'New information tab, themes, and custom icons'
 ---
 
 The first content update for Omega Calculator has now been released. Version 1.2.0 brings a new Information tab in settings which is essentially a user guide; it tells you about the buttons' purposes and functionalities. This tab will likely be expanded in the future.

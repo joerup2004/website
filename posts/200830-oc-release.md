@@ -4,6 +4,7 @@ title: 'Omega Calculator App Released'
 category: 'app'
 date: '2020-08-30'
 image: '/images/Omega_Classic_Blue.png'
+desc: 'Your everyday calculator with so many features'
 ---
 
 Omega Calculator has officially been released on the App Store. The app has been gradually built over the past four months and is finally ready for use. It is a unique and innovative tool for making calculations in a sleek and beautiful way.

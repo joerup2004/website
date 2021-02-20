@@ -4,6 +4,7 @@ title: 'Planetaria Website Launched'
 category: 'app'
 date: '2021-02-15'
 image: '/images/Planetaria.png'
+desc: 'Planetaria online from all devices!'
 ---
 
 Today we are launching the Planetaria website, available at [planetaria.app](https://planetaria.app). After over a month of attempting to bring the iOS App to the web, today it is finally released. The website is extremely similar to the app, although it is accessible from all devices, not just those running iOS. It is also able to be constantly updated, instead of requiring the full App Store update.

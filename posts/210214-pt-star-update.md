@@ -4,6 +4,7 @@ title: 'Star Update Released'
 category: 'app'
 date: '2021-02-14'
 image: '/images/Planetaria.png'
+desc: 'Now, explore the galaxy'
 ---
 
 We are now releasing the Planetaria Star Update, version 1.1 for iOS. In this update, the scope of Planetaria has been expanded from the Solar System to the entire galaxy, as you can now explore hundreds of other stars and their systems. Some notable favorites include Betelgeuse, Polaris, and UY Scuti; be sure to check them out. 

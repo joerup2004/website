@@ -40,7 +40,8 @@ export default function Home ({ allPostsData }) {
                     <div>
                       <h1>{post.subject}</h1>
                       <h2>{post.title}</h2>
-                      <h3>{post.date}</h3>
+                      <h3>{post.desc}</h3>
+                      <h4>{post.date}</h4>
                     </div>
                   </div>
                 </a>
