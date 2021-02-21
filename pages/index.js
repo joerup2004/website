@@ -25,8 +25,10 @@ export default function Home ({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
 
-      <section className={styles.headingMd}>
-        <p>Hello my friends. Welcome to the website.</p>
+      <section className={styles.intro}>
+        <p>
+          Hello my friends. Welcome to my personal website. This is where you can find all of my projects and posts. Have fun :)
+        </p>
       </section>
 
       {/* <section>
@@ -35,29 +37,51 @@ export default function Home ({ allPostsData }) {
         <button className={viewCategory == "space" ? styles.selectedbutton : styles.button} onClick={() => setCategory(viewCategory === 'space' ? 'all' : 'space')}>Space</button>
       </section> */}
 
-      <section className={`${styles.headingMd}`}>
-        <h2 className={styles.headingLg}>Posts</h2>
-        {allPostsData.map(({ id, category, subject, title, date, image, desc }) => (
-          <li className={styles.listItem} key={id} style={{ 
-            display: (viewCategory === category || viewCategory === 'all') ? "block":"none"
-          }}>
-          <Link href="/[category]/[id]" as={`/${category}/${id}`}>
-            <a>
-              <div className={styles.horizontal}>
-                <div className={styles.image}>
-                  <img src={image}/>
-                </div>
-                <div>
-                  <h1>{`${category.toUpperCase()[0] + category.substr(1)} • ${subject}`}</h1>
-                  <h2>{title}</h2>
-                  <h3>{desc}</h3>
-                  <h4><Date dateString={date}/></h4>
-                </div>
-              </div>
-            </a>
+      <h2 className={styles.sectionhead}>Stuff</h2>
+      <div className={styles.projectTable}>
+        <div className={styles.projectItem}>
+          <Link href="/projects/planetaria">
+            <div>
+              <img src='/images/Planetaria.png'/>
+              <h1>Planetaria</h1>
+            </div>
           </Link>
-        </li>
-        ))}
+        </div>
+        <div className={styles.projectItem}>
+          <Link href="/projects/omegacalc">
+            <div>
+              <img src='/images/Omega_Classic_Blue.png'/>
+              <h1>Omega Calculator</h1>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      <section className={styles.posts}>
+        <div>
+          <h2 className={styles.sectionhead}>Posts</h2>
+          {allPostsData.map(({ id, category, subject, title, date, image, desc }) => (
+            <li className={styles.listItem} key={id} style={{ 
+              display: (viewCategory === category || viewCategory === 'all') ? "block":"none"
+            }}>
+              <Link href="/[category]/[id]" as={`/${category}/${id}`}>
+                <a>
+                  <div className={styles.horizontal}>
+                    <div className={styles.image}>
+                      <img src={image}/>
+                    </div>
+                    <div>
+                      <h1>{`${category.toUpperCase()[0] + category.substr(1)} • ${subject}`}</h1>
+                      <h2>{title}</h2>
+                      <h3>{desc}</h3>
+                      <h4><Date dateString={date}/></h4>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </div>
       </section>
     </Layout>
   )

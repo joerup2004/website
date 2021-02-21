@@ -26,6 +26,23 @@
   line-height: 1.5;
 }
 
+.intro {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.intro p {
+  max-width: 40rem;
+  text-align: center;
+}
+
+.sectionhead {
+  font-size: 2rem;
+  margin: 12px;
+  text-align: center;
+}
+
 .borderCircle {
   border-radius: 9999px;
 }
@@ -42,12 +59,66 @@
   display: flex;
 }
 
+@media only screen and (min-width: 801px) {
+  .projectTable {
+      display: flex;
+  }
+}
+
+.projectItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.projectItem div {
+  margin: 0;
+  width: 100%;
+  background-color: #dddddd;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-top: 20px;
+  border-radius: 4%;
+}
+.projectItem div:hover {
+  background-color: #eeeeee;
+}
+
+.projectItem img {
+  min-width: 100px;
+  height: 100px;
+  border-radius: 10%;
+}
+.projectItem h1 {
+  margin: 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  font-size: 40px;
+  color: #222;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.posts div {
+  max-width: 45rem;
+}
+
 .listItem {
   padding-bottom: 20px;
 }
 .listItem .horizontal {
   margin: 0;
   background-color: #ddd;
+  width: 100%;
   padding: 10px;
   border-radius: 4%;
 }
@@ -107,6 +178,56 @@
   border-radius: 10%;
 }
 
+.projectHeader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.projectHeader img {
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10%;
+}
+.projectHeader h1 {
+  font-size: 4rem;
+}
+
+.projectText {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+@media only screen and (min-width: 801px) {
+  .projectLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.projectLinks div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 20px;
+  background-color: #ddd;
+  border-radius: 10%;
+}
+.projectLinks div:hover {
+  background-color: #eee;
+}
+
 .lightText {
   color: #888;
   margin: 0;
@@ -137,4 +258,32 @@
   display: inline-block;
   font-size: 20px;
   border-radius: 10%;
+}
+
+
+.project h1 {
+  margin: 0;
+  font-size: 100px;
+  font-weight: bold;
+  color: #000;
+}
+
+.project h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: normal;
+  color: #888;
+}
+
+.project p {
+  margin: 0;
+  font-size: 30px;
+  font-weight: normal;
+  color: #555;
+}
+
+.project img {
+  align-content: center;
+  width: 200px;
+  height: 200px;
 }

@@ -6,9 +6,9 @@ import Link from 'next/link'
 const name = 'Joe Rupertus'
 export const siteTitle = 'Joe Rupertus'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, top, bottom, article }) {
   return (
-    <div className={styles.container}>
+    <div className={article ? styles.container2 : styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -34,6 +34,24 @@ export default function Layout({ children, home }) {
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
+        ) : top ? (
+          <>
+            <br/>
+            <Link href="/">
+              <a>
+                <img
+                  src="/images/turtle.png"
+                  className={`${styles.footerImage} ${utilStyles.borderCircle}`}
+                  alt={name}
+                />
+              </a>
+            </Link>
+            <h2 className={utilStyles.headingLg}>
+              <Link href="/">
+                <a className={utilStyles.colorInherit}>{name}</a>
+              </Link>
+            </h2>
+          </>
         ) : (
           <></>
         )}
@@ -42,7 +60,7 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
 
       <footer className={styles.footer}>
-        {!home ? (
+        {bottom ? (
           <>
             <br/>
             <Link href="/">
