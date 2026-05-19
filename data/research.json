@@ -1,5 +1,15 @@
 [
   {
+    "id": "abitofclarification",
+    "title": "A Bit of Clarification: Probabilistic User-in-the-Loop Disambiguation of Multimodal Input in AR",
+    "abstract": "Multimodal inputs in Augmented Reality (AR) are inherently imprecise, noisy, and underspecified, meaning the same input can map to multiple valid interpretations. This is not a limitation of recognition or inference systems, but rather it is fundamentally an interaction problem. We introduce a proof-of-concept AR system that addresses this through user-in-the-loop disambiguation, using a Dynamic Bayesian Network to fuse gaze, voice, and gesture inputs into probability distributions over target and action spaces. The system enters disambiguation mode when no candidate is sufficiently confident, presenting audio and visual feedback to guide users toward a single clarifying input. We evaluate the system through a two-part user study: a multimodal elicitation study and a disambiguation mode comparison. Our fusion system correctly predicted intent in 53.1% of free-form elicitation trials, with the correct intent appearing in the candidate set in 83.3% of trials. Participants successfully disambiguated after a single input in 82.8% of trials.",
+    "institution": "Princeton University",
+    "authors": ["Joseph Rupertus", "Parastoo Abtahi"],
+    "pdf": "/files/abitofclarification.pdf",
+    "tags": ["Senior Thesis"],
+    "date": "2026-04-22"
+  },
+  {
     "id": "digitaltwins",
     "title": "Redefining Research Crowdsourcing: Incorporating Human Feedback with LLM-Powered Digital Twins",
     "abstract": "Crowd work platforms like Amazon Mechanical Turk and Prolific are vital for research, yet workers’ growing use of generative AI tools poses challenges. Researchers face compromised data validity as AI responses replace authentic human behavior, while workers risk diminished roles as AI automates tasks. To address this, we propose a hybrid framework using digital twins, personalized AI models that emulate workers’ behaviors and preferences while keeping humans in the loop. We evaluate our system with an experiment (n=88 crowd workers) and in-depth interviews with crowd workers (n=5) and social science researchers (n=4). Our results suggest that digital twins may enhance productivity and reduce decision fatigue while maintaining response quality. Both researchers and workers emphasized the importance of transparency, ethical data use, and worker agency. By automating repetitive tasks and preserving human engagement for nuanced ones, digital twins may help balance scalability with authenticity.",
