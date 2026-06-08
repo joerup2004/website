@@ -1,25 +1,13 @@
 import projectsData from '../../data/projects.json'
-import { motion } from 'framer-motion';
 
 export default function Projects() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-    >
+    <section>
       <div className="container mx-auto text-center max-w-2xl xl:max-w-4xl sm:pb-10">
         <div className="rounded-2xl bg-gradient-to-br from-zinc-50 dark:from-gray-800 to-white dark:to-gray-900 p-6 shadow-sm">
           <ol className="space-y-3">
             {projectsData.map((project, index) => (
-              <motion.li 
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <li key={project.id}>
                 <a
                   href={project.link}
                   className="block group hover:bg-zinc-50/80 dark:hover:bg-gray-700/80 p-3 -mx-2 rounded-xl transition-all duration-300"
@@ -54,11 +42,11 @@ export default function Projects() {
                     </div>
                   </div>
                 </a>
-              </motion.li>
+              </li>
             ))}
           </ol>
         </div>
       </div>
-    </motion.section>
+    </section>
   )
-} 
+}

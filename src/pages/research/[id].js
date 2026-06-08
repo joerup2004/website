@@ -39,13 +39,13 @@ export default function ResearchProject({ apps }) {
     <Layout apps={apps}>
       <div className="container mx-auto px-4 md:py-16 max-w-4xl md:pt-24">
         {/* Title */}
-        <h1 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 text-gray-900 dark:text-white font-host-grotesk">
+        <h1 className="text-2xl md:text-4xl font-semibold mb-3 md:mb-4 text-gray-900 dark:text-white font-literata">
           {project.title}
         </h1>
 
         {/* Authors */}
         <div className="mb-3 md:mb-4">
-          <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 font-medium">
+          <p className="text-base md:text-lg font-literata text-gray-700 dark:text-gray-200 font-medium">
             {project.authors.join(', ')}
           </p>
         </div>
@@ -83,8 +83,8 @@ export default function ResearchProject({ apps }) {
         {/* Abstract */}
         <div className="mb-8">
           <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <h2 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 mb-2 font-host-grotesk">Abstract</h2>
-            <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            <h2 className="text-sm md:text-base font-medium text-gray-800 dark:text-gray-200 mb-2 font-literata">Abstract</h2>
+            <p className="text-xs md:text-sm font-literata text-gray-600 dark:text-gray-300 leading-relaxed">
               {project.abstract}
             </p>
           </div>

@@ -61,7 +61,7 @@ export default function Updates({ apps }) {
 
       <section className="px-4 md:py-16">
         <div className="container mx-auto max-w-3xl">
-          <h1 className="text-3xl lg:text-4xl font-host-grotesk font-extrabold text-gray-900 dark:text-white mb-8 md:mt-16">
+          <h1 className="text-3xl lg:text-4xl font-literata font-bold text-gray-900 dark:text-white mb-8 md:mt-16">
             App Updates
           </h1>
 

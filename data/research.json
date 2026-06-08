@@ -10,18 +10,6 @@
     "date": "2026-04-22"
   },
   {
-    "id": "digitaltwins",
-    "title": "Redefining Research Crowdsourcing: Incorporating Human Feedback with LLM-Powered Digital Twins",
-    "abstract": "Crowd work platforms like Amazon Mechanical Turk and Prolific are vital for research, yet workers’ growing use of generative AI tools poses challenges. Researchers face compromised data validity as AI responses replace authentic human behavior, while workers risk diminished roles as AI automates tasks. To address this, we propose a hybrid framework using digital twins, personalized AI models that emulate workers’ behaviors and preferences while keeping humans in the loop. We evaluate our system with an experiment (n=88 crowd workers) and in-depth interviews with crowd workers (n=5) and social science researchers (n=4). Our results suggest that digital twins may enhance productivity and reduce decision fatigue while maintaining response quality. Both researchers and workers emphasized the importance of transparency, ethical data use, and worker agency. By automating repetitive tasks and preserving human engagement for nuanced ones, digital twins may help balance scalability with authenticity.",
-    "institution": "Princeton University",
-    "authors": ["Amanda Chan", "Catherine Di", "Joseph Rupertus", "Gary Smith", "Varun Nagaraj Rao", "Manoel Horta Ribeiro", "Andrés Monroy-Hernández"],
-    "publication": "https://dl.acm.org/doi/10.1145/3706599.3720269",
-    "pdf": "/files/digitaltwins.pdf",
-    "tags": ["CHI 2025 Late Breaking Work - Yokohama, Japan"],
-    "date": "2025-04-25",
-    "prominent": true
-  },
-  {
     "id": "roomofthoughts",
     "title": "Room of Thoughts: Exploring the Role of AI Assistants in 3D Space",
     "abstract": "We present Room of Thoughts, a novel way to interact with Large Language Models (LLMs) in a visual, graphical interface within augmented reality on Apple Vision Pro. Room of Thoughts combines visualized organization with spatial anchoring by using virtual windows embedded within the user’s physical room that are separated by topic and logically connected by visual links. Room of Thoughts aims to make interaction with LLMs more visual and more engaging, and enable higher levels of exploration and learning.",
@@ -33,14 +21,15 @@
     "date": "2025-04-27"
   },
   {
-    "id": "ntl",
-    "title": "Nighttime Lighting Data as a Proxy for Hurricane Strength",
-    "abstract": "This paper builds on the body of research applications of nighttime lighting data: the artificial lighting emissions from our planet’s nighttime surface collected daily by satellite imaging. While previous research has shown that hurricane damage can be visualized in terms of NTL data, there has not yet been research done in exploring differences between the NTL change over a variety of hurricane impacts. In this paper, we investigate 21 different Atlantic hurricanes which made landfall in the United States since 2012, and attempt to relate the strength of the hurricane as reported by meteorological data to the change in NTL data before and after impact, used as a proxy for the amount of damage the hurricane inflicted on the area in its path. With this revision, we apply statistical methods and qualitative analysis to better answer this question. Through the analysis, we find that NTL changes are partially indicative of hurricane strength, although various limitations with the methodology have left us without full certainty. There will need to be further research done on this topic with more rigorous approaches to tracking NTL data to solidify the relationship between hurricane strength and NTL-indicated damage. In the conclusion of the paper I outline more proposed research methods that may be able to unlock findings beyond what we were able to uncover here. Still, this research was successful in providing a link, even if only partially, between hurricane damage and NTL changes. My goal for this pilot study was to prove that the methodology can yield interesting results, and hopefully this can lead to deeper analysis in the future.",
+    "id": "digitaltwins",
+    "title": "Redefining Research Crowdsourcing: Incorporating Human Feedback with LLM-Powered Digital Twins",
+    "abstract": "Crowd work platforms like Amazon Mechanical Turk and Prolific are vital for research, yet workers’ growing use of generative AI tools poses challenges. Researchers face compromised data validity as AI responses replace authentic human behavior, while workers risk diminished roles as AI automates tasks. To address this, we propose a hybrid framework using digital twins, personalized AI models that emulate workers’ behaviors and preferences while keeping humans in the loop. We evaluate our system with an experiment (n=88 crowd workers) and in-depth interviews with crowd workers (n=5) and social science researchers (n=4). Our results suggest that digital twins may enhance productivity and reduce decision fatigue while maintaining response quality. Both researchers and workers emphasized the importance of transparency, ethical data use, and worker agency. By automating repetitive tasks and preserving human engagement for nuanced ones, digital twins may help balance scalability with authenticity.",
     "institution": "Princeton University",
-    "authors": ["Joseph Rupertus"],
-    "pdf": "/files/ntl.pdf",
-    "github": "https://github.com/joerup/hurricane-ntl",
-    "tags": ["Writing Seminar Final Research Paper"],
-    "date": "2023-05-09"
+    "authors": ["Amanda Chan", "Catherine Di", "Joseph Rupertus", "Gary Smith", "Varun Nagaraj Rao", "Manoel Horta Ribeiro", "Andrés Monroy-Hernández"],
+    "publication": "https://dl.acm.org/doi/10.1145/3706599.3720269",
+    "pdf": "/files/digitaltwins.pdf",
+    "tags": ["CHI 2025 Late Breaking Work - Yokohama, Japan"],
+    "date": "2025-04-25",
+    "prominent": true
   }
 ] 

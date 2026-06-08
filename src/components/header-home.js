@@ -86,57 +86,15 @@ export default function HeaderHome() {
   };
 
   const getButtonClasses = (sectionId) => {
-    const baseClasses = "font-host-grotesk font-extrabold text-transparent bg-clip-text hover:scale-105 transition-all duration-300 relative" + " " + "[font-weight:900]";
-    let gradientClasses = "";
-    
-    switch(sectionId) {
-      case 'apps':
-        gradientClasses = "bg-gradient-to-r from-rose-600 to-pink-500";
-        break;
-      case 'experience':
-        gradientClasses = "bg-gradient-to-r from-lime-500 to-emerald-500";
-        break;
-      case 'research':
-        gradientClasses = "bg-gradient-to-r from-orange-500 to-amber-500";
-        break;
-      case 'skills':
-        gradientClasses = "bg-gradient-to-r from-sky-500 to-blue-600";
-        break;
-      case 'about':
-        gradientClasses = "bg-gradient-to-r from-purple-500 to-pink-500";
-        break;
-    }
-
-    return `${baseClasses} ${gradientClasses}`;
+    return "font-literata font-bold text-emerald-600 hover:scale-105 transition-all duration-300 relative";
   };
 
   const getUnderlineClasses = (sectionId) => {
-    const baseClasses = "absolute -bottom-1 left-0 w-full h-0.5 rounded-full transform scale-x-0 transition-transform duration-300";
-    let gradientClasses = "";
-    
-    switch(sectionId) {
-      case 'apps':
-        gradientClasses = "bg-gradient-to-r from-rose-600 to-pink-500";
-        break;
-      case 'experience':
-        gradientClasses = "bg-gradient-to-r from-lime-500 to-emerald-500";
-        break;
-      case 'research':
-        gradientClasses = "bg-gradient-to-r from-orange-500 to-amber-500";
-        break;
-      case 'skills':
-        gradientClasses = "bg-gradient-to-r from-sky-500 to-blue-600";
-        break;
-      case 'about':
-        gradientClasses = "bg-gradient-to-r from-purple-500 to-pink-500";
-        break;
-    }
-
-    // Show underline if: on homepage and section is active, OR on research page and this is research tab, OR on experience page and this is experience tab
-    const shouldShowUnderline = (isHomePage && activeSection === sectionId) || 
-                                 (isResearchPage && sectionId === 'research') || 
+    const baseClasses = "absolute -bottom-1 left-0 w-full h-0.5 rounded-full transform scale-x-0 transition-transform duration-300 bg-emerald-600";
+    const shouldShowUnderline = (isHomePage && activeSection === sectionId) ||
+                                 (isResearchPage && sectionId === 'research') ||
                                  (isExperiencePage && sectionId === 'experience');
-    return `${baseClasses} ${gradientClasses} ${shouldShowUnderline ? 'scale-x-100' : ''}`;
+    return `${baseClasses} ${shouldShowUnderline ? 'scale-x-100' : ''}`;
   };
 
   return (
@@ -167,7 +125,7 @@ export default function HeaderHome() {
                       router.push('/');
                     }
                   }}
-                  className="text-xl font-host-grotesk font-extrabold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-200 hover:scale-105 transform whitespace-nowrap relative"
+                  className="text-xl font-literata font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-200 hover:scale-105 transform whitespace-nowrap relative"
                 >
                   Joe Rupertus
                   <div className={`absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-600 rounded-full transform transition-transform duration-300 ${isHomePage && !activeSection ? 'scale-x-100' : 'scale-x-0'}`}></div>
@@ -193,20 +151,6 @@ export default function HeaderHome() {
                   <div className={getUnderlineClasses('research')} />
                 </button>
                 <button
-                  onClick={() => scrollToSection('experience')}
-                  className={getButtonClasses('experience')}
-                >
-                  Experience
-                  <div className={getUnderlineClasses('experience')} />
-                </button>
-                <button
-                  onClick={() => scrollToSection('skills')}
-                  className={getButtonClasses('skills')}
-                >
-                  Skills
-                  <div className={getUnderlineClasses('skills')} />
-                </button>
-                <button
                   onClick={() => scrollToSection('about')}
                   className={getButtonClasses('about')}
                 >
@@ -217,7 +161,7 @@ export default function HeaderHome() {
             </nav>
 
             {/* Theme Toggle */}
-            <div className="w-full md:w-auto lg:w-32 flex justify-between md:justify-end lg:justify-end">
+            <div className="w-full md:w-auto lg:w-40 flex justify-between md:justify-end lg:justify-end">
               {/* Mobile Home Button */}
               <Link href="/" className="md:hidden p-2">
                 <button

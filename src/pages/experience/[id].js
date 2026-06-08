@@ -32,7 +32,7 @@ export default function ExperienceRole({ apps }) {
     return (
       <Layout apps={apps}>
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-2xl font-bold font-host-grotesk">Role not found</h1>
+          <h1 className="text-2xl font-semibold font-literata">Role not found</h1>
         </div>
       </Layout>
     );
@@ -54,7 +54,7 @@ export default function ExperienceRole({ apps }) {
             </div>
           </div>
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-xl md:text-3xl font-bold mb-1 text-gray-900 dark:text-white font-host-grotesk">
+            <h1 className="text-xl md:text-3xl font-semibold mb-1 text-gray-900 dark:text-white font-literata">
               {role.position}
             </h1>
             <div className="text-lg md:text-lg font-semibold text-gray-700 dark:text-gray-300 md:mb-2">
@@ -81,7 +81,7 @@ export default function ExperienceRole({ apps }) {
         {/* Description */}
         <div className="mb-8">
           <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <h2 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 mb-2 font-host-grotesk">Overview</h2>
+            <h2 className="text-sm md:text-base font-medium text-gray-800 dark:text-gray-200 mb-2 font-literata">Overview</h2>
             <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
               {role.description}
             </p>

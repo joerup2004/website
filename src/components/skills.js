@@ -1,24 +1,18 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import skillsData from '../../data/skills.json';
 
 export default function Skills() {
   const { skills } = skillsData;
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4 px-0 md:px-4 lg:px-6 border-t border-b border-gray-200 dark:border-gray-700 md:border-0"
-    >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-4 px-0 md:px-4 lg:px-6 border-t border-b border-gray-200 dark:border-gray-700 md:border-0">
       {skills.map((skillGroup, index) => (
         <div
           key={index}
           className={`bg-white dark:bg-[#18202F] px-0 md:px-6 py-3 md:py-6 rounded-none md:rounded-2xl border-b border-gray-200 dark:border-gray-700 md:border ${index === skills.length - 1 ? 'border-b-0' : ''}`}
         >
           <div className="flex items-center gap-3 pt-2 sm:pt-0 mb-4 px-4 md:px-0">
-            <h3 className="text-base md:text-xl font-bold font-host-grotesk text-gray-900 dark:text-white">
+            <h3 className="text-base md:text-xl font-semibold font-literata text-gray-900 dark:text-white">
               {skillGroup.category}
             </h3>
           </div>
@@ -35,6 +29,6 @@ export default function Skills() {
           </div>
         </div>
       ))}
-    </motion.div>
+    </div>
   );
-} 
+}

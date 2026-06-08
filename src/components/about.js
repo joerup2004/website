@@ -1,45 +1,26 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Socials from './socials';
 
 export default function About() {
   return (
     <div className="overflow-hidden">
-      {/* New About Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto px-4 py-4 md:py-6"
-      >
+      <div className="max-w-4xl mx-auto px-4 py-4 md:py-6">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Left side - Image */}
           <div className="w-[90%] md:w-[80%] mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative aspect-square rounded-2xl overflow-hidden shadow-xl transform transition-transform duration-300 hover:scale-105"
-            >
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl transform transition-transform duration-300 hover:scale-105">
               <Image
                 src="/images/about/aboutpic.JPG"
                 alt="A portrait of me"
                 fill
                 className="object-cover"
               />
-            </motion.div>
+            </div>
           </div>
 
-          {/* Right side - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-4 md:space-y-6 px-4 md:px-0"
-          >
+          <div className="space-y-4 md:space-y-6 px-4 md:px-0">
             <div className="space-y-2">
-              <h1 className="text-xl md:text-3xl font-bold font-host-grotesk text-gray-900 dark:text-white [font-weight:900]">
+              <h1 className="text-xl md:text-3xl font-semibold font-literata text-gray-900 dark:text-white">
                 Hello 👋
               </h1>
             </div>
@@ -68,21 +49,15 @@ export default function About() {
                 <b>Let's connect ⬇️</b>
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Social Media Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 md:mt-12 max-w-2xl mx-auto"
-        >
+        <div className="mt-8 md:mt-12 max-w-2xl mx-auto">
           <div className="pt-5 md:pt-4">
             <Socials size="large" branded />
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </div>
   );
-} 
+}

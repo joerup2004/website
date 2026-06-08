@@ -28,12 +28,12 @@ export default function Footer({ apps, app }) {
             {/* Centered Text */}
             <div className="relative lg:absolute inset-x-0 text-center z-0">
               <div className="inline-block pb-8 md:pb-0">
-                <p className={`text-xs md:text-sm text-gray-400`}>
-                  Copyright © 2025 Joseph Rupertus
+                <p className={`text-[10px] md:text-sm text-gray-400`}>
+                  Copyright © 2026 Joseph Rupertus
                 </p>
                 {app && (
                   <Link href={`/${app.string}/privacy`}>
-                    <p className={`text-xs md:text-sm text-gray-400`}>
+                    <p className={`text-[10px] md:text-sm text-gray-400`}>
                       <u>Privacy Policy</u>
                     </p>
                   </Link>

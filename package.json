@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/host-grotesk": "^5.2.8",
+    "@fontsource/literata": "^5.2.8",
     "@fontsource/righteous": "^5.2.5",
     "@heroicons/react": "^2.2.0",
     "aos": "^2.3.4",

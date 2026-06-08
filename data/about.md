@@ -1,0 +1,3 @@
+I've always been someone who enjoys building and creating things in any form, whether that's art, videos, or apps. When I was 16 I was bored at home during COVID and taught myself how to make iOS apps by watching YouTube tutorials. I shipped four apps to the App Store and won the Swift Student Challenge.
+
+At Princeton, I got involved with several startups and even tried founding my own company. I also did HCI research on human-AI collaboration and spatial computing. I presented a project about AI digital twins for crowd work at CHI 2025, and I wrote my senior thesis on inferring user intent from multimodal input in AR.

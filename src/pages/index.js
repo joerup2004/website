@@ -1,13 +1,15 @@
+import fs from 'fs';
+import path from 'path';
+import { remark } from 'remark';
+import html from 'remark-html';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout-home';
 import { getSortedAppsData } from '/lib/apps';
 import Socials from '../components/socials';
 import Projects from '../components/projects';
-import Experience from '../components/experience';
 import Research from '../components/research';
-import Skills from '../components/skills';
 import Apps from '../components/apps';
-import About from '../components/about';
+import highlights from '../../data/highlights.json';
 import { useEffect, useRef, useState } from 'react';
 import { useActiveSection } from '../context/ActiveSectionContext';
 import { ActiveSectionProvider } from '../context/ActiveSectionContext';
@@ -15,14 +17,22 @@ import Image from 'next/image';
 
 export async function getStaticProps() {
   const apps = getSortedAppsData();
+  const bioMarkdown = fs.readFileSync(path.join(process.cwd(), 'data', 'bio.md'), 'utf8');
+  const aboutMarkdown = fs.readFileSync(path.join(process.cwd(), 'data', 'about.md'), 'utf8');
+  const location = fs.readFileSync(path.join(process.cwd(), 'data', 'location.md'), 'utf8').trim();
+  const bio = (await remark().use(html).process(bioMarkdown)).toString();
+  const about = (await remark().use(html).process(aboutMarkdown)).toString();
   return {
     props: {
       apps,
+      bio,
+      about,
+      location,
     },
   };
 }
 
-function HomeContent({ apps }) {
+function HomeContent({ apps, bio, about, location }) {
   const sections = useRef([]);
   const { setActiveSection, activeSection } = useActiveSection();
 
@@ -49,15 +59,7 @@ function HomeContent({ apps }) {
         return currentDistance < bestDistance ? current : best;
       });
 
-      // Add fade-in animation to all sections
-      sectionElements.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
-          section.classList.add('visible');
-        }
-      });
-
-      // Get the hero section's position
+      // get the hero section's position
       const heroSection = document.getElementById('hero');
       if (heroSection) {
         const heroRect = heroSection.getBoundingClientRect();
@@ -84,54 +86,11 @@ function HomeContent({ apps }) {
   }, [setActiveSection]);
 
   const getUnderlineClasses = (sectionId) => {
-    const baseClasses = "w-16 md:w-20 lg:w-24 h-0.5 md:h-1 mt-2 rounded-full transition-all duration-300 transform scale-x-0";
-    let gradientClasses = "";
-    
-    switch(sectionId) {
-      case 'apps':
-        gradientClasses = "bg-gradient-to-r from-rose-600 to-pink-500";
-        break;
-      case 'experience':
-        gradientClasses = "bg-gradient-to-r from-lime-500 to-emerald-500";
-        break;
-      case 'research':
-        gradientClasses = "bg-gradient-to-r from-orange-500 to-amber-500";
-        break;
-      case 'skills':
-        gradientClasses = "bg-gradient-to-r from-sky-500 to-blue-600";
-        break;
-      case 'about':
-        gradientClasses = "bg-gradient-to-r from-purple-500 to-pink-500";
-        break;
-    }
-
-    return `${baseClasses} ${gradientClasses} ${activeSection === sectionId ? 'scale-x-100' : ''}`;
+    return "w-16 md:w-20 lg:w-24 h-0.5 md:h-1 mt-2 rounded-full transform scale-x-0 bg-emerald-600";
   };
 
   const getTitleClasses = (sectionId) => {
-    const baseClasses = "text-2xl md:text-3xl lg:text-4xl font-extrabold text-center font-host-grotesk tracking-tight transition-all duration-300 md:pt-12" + " " + "[font-weight:900]";
-    const activeClasses = "scale-110 brightness-110";
-    let gradientClasses = "";
-    
-    switch(sectionId) {
-      case 'apps':
-        gradientClasses = "bg-gradient-to-r from-rose-600 to-pink-500 text-transparent bg-clip-text";
-        break;
-      case 'experience':
-        gradientClasses = "bg-gradient-to-r from-lime-500 to-emerald-500 text-transparent bg-clip-text";
-        break;
-      case 'research':
-        gradientClasses = "bg-gradient-to-r from-orange-500 to-amber-500 text-transparent bg-clip-text";
-        break;
-      case 'skills':
-        gradientClasses = "bg-gradient-to-r from-sky-500 to-blue-600 text-transparent bg-clip-text";
-        break;
-      case 'about':
-        gradientClasses = "bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text";
-        break;
-    }
-
-    return `${baseClasses} ${gradientClasses} ${activeSection === sectionId ? activeClasses : ''}`;
+    return "text-base md:text-3xl lg:text-3xl font-bold text-center font-literata tracking-tight md:pt-12 text-gray-900 dark:text-white";
   };
 
   const scrollToSection = (sectionId) => {
@@ -154,30 +113,6 @@ function HomeContent({ apps }) {
         <title>{siteTitle}</title>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet" />
-        <style jsx global>{`
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-          }
-          .section-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-          }
-          .section-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        `}</style>
       </Head>
 
       {/* Hero Section */}
@@ -189,14 +124,26 @@ function HomeContent({ apps }) {
               alt="Profile"
               className="w-16 h-16 lg:w-24 lg:h-24 rounded-full shadow-2xl"
             />
-            <h1 className="text-2xl md:text-3xl lg:text-6xl font-host-grotesk font-extrabold text-gray-900 dark:text-white tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-5xl font-literata font-bold text-gray-900 dark:text-white tracking-tight mb-2 md:mb-4">
               Joe Rupertus
             </h1>
-            <p className="text-sm md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
-              I am an undergraduate student at Princeton and an indie developer interested in human-computer interaction. I like to use tech
-              to create engaging, interactive experiences that people enjoy using. 
-            </p>
-            <div className="pt-2">
+            <div
+              className="bio text-xs md:text-base lg:text-lg font-literata font-normal text-gray-600 dark:text-gray-300 max-w-2xl pt-3 md:pt-4 pb-6 md:pb-10"
+              dangerouslySetInnerHTML={{ __html: bio }}
+            />
+            <style jsx global>{`
+              .bio p + p {
+                margin-top: 1em;
+              }
+              .bio a {
+                color: #059669;
+                text-decoration: underline;
+              }
+              .bio a:hover {
+                color: #047857;
+              }
+            `}</style>
+            <div className="pt-2 pb-8 md:pb-12">
               <Socials/>
             </div>
             <style jsx>{`
@@ -209,44 +156,19 @@ function HomeContent({ apps }) {
                 }
               }
             `}</style>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-16 pt-4 md:pt-8 pb-0 md:pb-8 w-full max-w-5xl md:px-8 lg:px-12">
-              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#40E0D0]/5 to-[#20B2AA]/5 dark:from-[#40E0D0]/8 dark:to-[#20B2AA]/8 p-4 md:p-8 border border-gray-200 dark:border-gray-700 transition-all duration-300 md:hover:border-[#40E0D0]/50 dark:md:hover:border-[#40E0D0]/40">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#40E0D0]/3 to-[#20B2AA]/3 dark:from-[#40E0D0]/5 dark:to-[#20B2AA]/5 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent" style={{ animation: 'shimmer 2s infinite' }}></div>
-                </div>
-                <div className="relative">
-                  <div className="flex flex-col items-center text-center mb-2 md:mb-4">
-                    <h3 className="text-base md:text-xl font-bold font-host-grotesk text-gray-900 dark:text-white">CS @ Princeton</h3>
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-16 pt-4 md:pt-8 pb-0 md:pb-8 w-full max-w-5xl md:px-8 lg:px-12">
+              {highlights.map((highlight, idx) => (
+                <div key={idx} className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#40E0D0]/5 to-[#20B2AA]/5 dark:from-[#40E0D0]/8 dark:to-[#20B2AA]/8 p-4 md:p-8 border border-gray-200 dark:border-gray-700 transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#40E0D0]/3 to-[#20B2AA]/3 dark:from-[#40E0D0]/5 dark:to-[#20B2AA]/5 backdrop-blur-sm"></div>
+                  <div className="relative">
+                    <div className="flex flex-col items-center text-center mb-2 md:mb-4">
+                      <h3 className="text-base md:text-xl font-semibold font-literata text-gray-900 dark:text-white">{highlight.title}</h3>
+                    </div>
+                    <p className="text-sm md:text-base text-gray-800 dark:text-gray-100 font-medium leading-relaxed text-center">{highlight.description}</p>
                   </div>
-                  <p className="text-sm md:text-base text-gray-800 dark:text-gray-100 font-medium leading-relaxed text-center">B.S.E. in Computer Science, Minor in Robotics (Class of 2026)</p>
                 </div>
-              </div>
-              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#40E0D0]/5 to-[#20B2AA]/5 dark:from-[#40E0D0]/8 dark:to-[#20B2AA]/8 p-4 md:p-8 border border-gray-200 dark:border-gray-700 transition-all duration-300 md:hover:border-[#40E0D0]/50 dark:md:hover:border-[#40E0D0]/40">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#40E0D0]/3 to-[#20B2AA]/3 dark:from-[#40E0D0]/5 dark:to-[#20B2AA]/5 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent" style={{ animation: 'shimmer 2s infinite' }}></div>
-                </div>
-                <div className="relative">
-                  <div className="flex flex-col items-center text-center mb-2 md:mb-4">
-                    <h3 className="text-base md:text-xl font-bold font-host-grotesk text-gray-900 dark:text-white">Indie App Developer</h3>
-                  </div>
-                  <p className="text-sm md:text-base text-gray-800 dark:text-gray-100 font-medium leading-relaxed text-center">Published 4 apps on the App Store, Swift Student Challenge Winner 2021</p>
-                </div>
-              </div>
-              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#40E0D0]/5 to-[#20B2AA]/5 dark:from-[#40E0D0]/8 dark:to-[#20B2AA]/8 p-4 md:p-8 border border-gray-200 dark:border-gray-700 transition-all duration-300 md:hover:border-[#40E0D0]/50 dark:md:hover:border-[#40E0D0]/40">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#40E0D0]/3 to-[#20B2AA]/3 dark:from-[#40E0D0]/5 dark:to-[#20B2AA]/5 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent" style={{ animation: 'shimmer 2s infinite' }}></div>
-                </div>
-                <div className="relative">
-                  <div className="flex flex-col items-center text-center mb-2 md:mb-4">
-                    <h3 className="text-base md:text-xl font-bold font-host-grotesk text-gray-900 dark:text-white">HCI Researcher</h3>
-                  </div>
-                  <p className="text-sm md:text-base text-gray-800 dark:text-gray-100 font-medium leading-relaxed text-center">Exploring Human-AI collaboration, presented at CHI 2025 LBW in Yokohama, Japan</p>
-                </div>
-              </div>
-            </div>
+              ))}
+            </div> */}
           </div>
         </div>
       </section>
@@ -255,11 +177,11 @@ function HomeContent({ apps }) {
       <section
         id="apps"
         ref={el => sections.current[0] = el}
-        className="section-fade bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 md:bg-none md:bg-gray-50 dark:md:bg-gray-800 pt-12 md:pt-0 pb-0 md:pb-16"
+        className="border-t border-gray-200 dark:border-gray-700 md:border-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 md:bg-none md:bg-gray-50 dark:md:bg-gray-800 pt-12 md:pt-0 pb-0 md:pb-16"
       >
         <div className="container mx-auto">
           <div 
-            className="flex flex-col items-center mb-8 transition-all duration-300 cursor-pointer md:hover:scale-[1.05]"
+            className="flex flex-col items-center mb-3 md:mb-6 transition-all duration-300 cursor-pointer"
             onClick={() => scrollToSection('apps')}
           >
             <h2 className={getTitleClasses('apps')}>
@@ -275,11 +197,11 @@ function HomeContent({ apps }) {
       <section
         id="research"
         ref={el => sections.current[1] = el}
-        className="section-fade bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 md:bg-none md:bg-white dark:md:bg-gray-900 pt-12 md:pt-0 pb-0 md:pb-16"
+        className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 md:bg-none md:bg-white dark:md:bg-gray-900 pt-12 md:pt-0 pb-0 md:pb-16"
       >
         <div className="container mx-auto">
           <div 
-            className="flex flex-col items-center mb-8 transition-all duration-300 cursor-pointer md:hover:scale-[1.05]"
+            className="flex flex-col items-center mb-3 md:mb-6 transition-all duration-300 cursor-pointer"
             onClick={() => scrollToSection('research')}
           >
             <h2 className={getTitleClasses('research')}>
@@ -291,57 +213,15 @@ function HomeContent({ apps }) {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section
-        id="experience"
-        ref={el => sections.current[2] = el}
-        className="section-fade bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 md:bg-none md:bg-gray-50 dark:md:bg-gray-800 pt-12 md:pt-0 pb-0 md:pb-16 md:leading-4"
-      >
-        <div className="container mx-auto">
-          <div 
-            className="flex flex-col items-center mb-8 transition-all duration-300 cursor-pointer md:hover:scale-[1.05]"
-            onClick={() => scrollToSection('experience')}
-          >
-            <h2 className={getTitleClasses('experience')}>
-              Experience
-            </h2>
-            <div className={getUnderlineClasses('experience')} />
-          </div>
-          <Experience />
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section
-        id="skills"
-        ref={el => sections.current[3] = el}
-        className="section-fade bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 md:bg-none md:bg-white dark:md:bg-gray-900 pt-12 md:pt-0 pb-0 md:pb-16 md:px-4"
-      >
-        <div className="container mx-auto max-w-4xl">
-          <div 
-            className="flex flex-col items-center mb-8 transition-all duration-300 cursor-pointer md:hover:scale-[1.05]"
-            onClick={() => scrollToSection('skills')}
-          >
-            <h2 className={getTitleClasses('skills')}>
-              Skills
-            </h2>
-            <div className={getUnderlineClasses('skills')} />
-          </div>
-          <div className="space-y-4">
-            <Skills />
-          </div>
-        </div>
-      </section>
-
       {/* About Section */}
-      <section 
-        ref={el => sections.current[4] = el} 
-        id="about" 
-        className="section-fade pt-12 pb-16 md:pt-0 pb-0 md:pb-16 bg-gray-50 dark:bg-gray-800"
+      <section
+        ref={el => sections.current[2] = el}
+        id="about"
+        className="pt-12 md:pt-0 pb-0 md:pb-16 bg-gray-50 dark:bg-gray-800"
       >
         <div>
-          <div 
-            className="flex flex-col items-center mb-8 transition-all duration-300 cursor-pointer md:hover:scale-[1.05]"
+          <div
+            className="flex flex-col items-center mb-3 md:mb-6 transition-all duration-300 cursor-pointer"
             onClick={() => scrollToSection('about')}
           >
             <h2 className={getTitleClasses('about')}>
@@ -349,7 +229,33 @@ function HomeContent({ apps }) {
             </h2>
             <div className={getUnderlineClasses('about')} />
           </div>
-          <About />
+          <div className="container mx-auto text-center max-w-2xl xl:max-w-3xl px-4 md:px-6">
+            <div
+              className="bio text-xs md:text-base lg:text-lg font-literata font-normal text-gray-600 dark:text-gray-300 text-center py-3 md:py-4"
+              dangerouslySetInnerHTML={{ __html: about }}
+            />
+          </div>
+          <div className="mt-8 md:mt-12 grid grid-cols-10 gap-3 md:gap-4 items-center max-w-5xl mx-auto px-4 md:px-6">
+            <img
+              src="/images/about/miami.jpeg"
+              alt="Land's End"
+              className="col-span-3 w-full aspect-square object-cover rounded-2xl shadow-lg"
+            />
+            <img
+              src="/images/about/tiger.JPG"
+              alt="Tiger"
+              className="col-span-4 w-full aspect-square object-cover rounded-2xl shadow-xl"
+            />
+            <img
+              src="/images/about/japan.JPG"
+              alt="A portrait of me"
+              className="col-span-3 w-full aspect-square object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+          <p className="text-xs md:text-base lg:text-lg font-literata font-normal text-center text-gray-600 dark:text-gray-300 mt-10 md:mt-14">
+            {location}
+          </p>
+          <div className="block md:hidden border-b border-gray-200 dark:border-gray-700 mt-12"></div>
         </div>
       </section>
     </Layout>
@@ -363,3 +269,4 @@ export default function Home(props) {
     </ActiveSectionProvider>
   );
 }
+
